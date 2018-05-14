@@ -1,0 +1,60 @@
+Carrinho criado com sucesso.
+
+Carrinho vazio!
+
+Carrinho criado com sucesso.
+
+Artigo criado com sucesso.
+
+Artigo criado com sucesso.
+
+Artigo criado com sucesso.
+
+Artigo adicionado com sucesso.
+
+Artigo adicionado com sucesso.
+
+Artigo adicionado com sucesso.
+
+Artigo adicionado com sucesso.
+
+Artigo adicionado com sucesso.
+
+Artigo adicionado com sucesso.
+
+Artigo adicionado com sucesso.
+
+Artigo adicionado com sucesso.
+
+Artigo adicionado com sucesso.
+
+arroz 108
+arroz 108
+ervilhas 69
+arroz 108
+papelhigienico 1299
+ervilhas 69
+arroz 108
+
+arroz 108
+ervilhas 69
+
+Artigo removido com sucesso.
+
+Artigo removido com sucesso.
+
+Artigo removido com sucesso.
+
+Artigo removido com sucesso.
+
+Artigo removido com sucesso.
+
+arroz 108
+arroz 108
+ervilhas 69
+arroz 108
+
+Carrinho vazio!
+
+Volte sempre.
+

@@ -1,0 +1,11 @@
+CRIA ARTIGO arroz 108 2
+CRIA ARTIGO arroz 70 2
+CRIA ARTIGO papelhigienico 1299 10
+CRIA ARTIGO ervilhas 69 1
+CRIA ARTIGO sabonete 129 3
+CRIA ARTIGO arroz 108 2
+CRIA ARTIGO papelhigienico 1299 10
+CRIA ARTIGO sabonete 129 3
+CRIA ARTIGO ervilhas 69 1
+SAIR
+

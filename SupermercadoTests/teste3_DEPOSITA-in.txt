@@ -1,0 +1,16 @@
+CRIA CARRINHO carro1 20
+CRIA CARRINHO carro2 15
+CRIA ARTIGO arroz 108 2
+CRIA ARTIGO papelhigienico 1299 10
+CRIA ARTIGO ervilhas 69 1
+DEPOSITA arroz carro1
+DEPOSITA arroz carro1
+DEPOSITA ervilhas carro1
+DEPOSITA arroz carro1
+DEPOSITA papelhigienico carro1
+DEPOSITA ervilhas carro1
+DEPOSITA arroz carro2
+DEPOSITA ervilhas carro2
+DEPOSITA arroz carro1
+SAIR
+
