@@ -14,7 +14,7 @@ public class Main {
     private enum Message {
 
         CART_REGISTERED("Carrinho criado com sucesso."),
-        DUPLICATE_CART("Carrinho inexistente!"),
+        DUPLICATE_CART("Carrinho existente!"),
         ITEM_REGISTERED("Artigo criado com sucesso."),
         DUPLICATE_ITEM("Artigo existente!"),
         ITEM_ADDED_TO_CART("Artigo adicionado com sucesso."),
@@ -234,7 +234,7 @@ public class Main {
     }
 
     private static void Pay(Scanner in, Supermarket sP) throws CartIDNotFoundException,EmptyCartException {
-        String cartID = in.nextLine();
+        String cartID = in.nextLine().trim();
 
         if(!sP.hasCart(cartID))
             throw new CartIDNotFoundException();
