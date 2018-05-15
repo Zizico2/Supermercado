@@ -211,7 +211,7 @@ public class Main {
     }
 
     private static void listItems(Scanner in, Supermarket sP) throws CartIDNotFoundException,EmptyCartException{
-        String cartID = in.nextLine();
+        String cartID = in.nextLine().trim();
 
         if(!sP.hasCart(cartID))
             throw new CartIDNotFoundException();
