@@ -100,31 +100,52 @@ public class Main {
 
 
                 case EXIT:
-                    System.out.println(Message.EXITING.msg);
+                    System.out.println(Message.EXITING.msg + "\n");
                     in.close();
                     break;
 
                 case UNKNOWN:
                     System.out.println(Message.UNKNOWN.msg);
             }
+            System.out.print("\n");
         }
     }
 
-    private static void processRegisterItem(Scanner in, Supermarket sP) {
+    private static void processRegisterCart(Scanner in, Supermarket sP) {
         try {
-            registerItem(in, sP);
+            registerCart(in, sP);
+            System.out.println(Message.CART_REGISTERED.msg);
         }
         catch (DuplicateIDException e){
             System.out.println(Message.DUPLICATE_CART.msg);
         }
     }
 
+    private static void registerCart(Scanner in, Supermarket sP) throws DuplicateIDException {
+        String ID = in.next().trim();
+
+        int capacity = in.nextInt();
+        in.nextLine();
+        if(sP.hasCart(ID))
+            throw new DuplicateIDException();
+        sP.registerCart(ID, capacity);
+    }
+    private static void processRegisterItem(Scanner in, Supermarket sP) {
+        try {
+            registerItem(in, sP);
+            System.out.println(Message.ITEM_REGISTERED.msg);
+        }
+        catch (DuplicateIDException e){
+            System.out.println(Message.DUPLICATE_ITEM.msg);
+        }
+    }
+
     private static void registerItem(Scanner in, Supermarket sP) throws DuplicateIDException {
-        String ID = in.next();
+        String ID = in.next().trim();
         int price = in.nextInt();
         int volume = in.nextInt();
-
         in.nextLine();
+
         if(sP.hasItem(ID))
             throw new DuplicateIDException();
         sP.registerItem(ID,price, volume);
@@ -154,23 +175,5 @@ public class Main {
     }
 
     private static void processPay(Scanner in, Supermarket sP) {
-    }
-
-    private static void processRegisterCart(Scanner in, Supermarket sP) {
-        try {
-            registerCart(in, sP);
-        }
-        catch (DuplicateIDException e){
-            System.out.println(Message.DUPLICATE_CART.msg);
-        }
-    }
-
-    private static void registerCart(Scanner in, Supermarket sP) throws DuplicateIDException {
-        String ID = in.next();
-        int capacity = in.nextInt();
-        in.nextLine();
-        if(sP.hasCart(ID))
-            throw new DuplicateIDException();
-        sP.registerCart(ID, capacity);
     }
 }

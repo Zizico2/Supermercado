@@ -17,7 +17,6 @@ public class SupermarketClass implements Supermarket {
     @Override
     public void registerCart(String ID, int capacity) {
             carts.put(ID, new CartClass(capacity));
-
     }
 
     @Override
@@ -56,5 +55,15 @@ public class SupermarketClass implements Supermarket {
         }
         cart.getItems().clear();
         return price;
+    }
+
+    @Override
+    public boolean hasItem(String id) {
+       return items.containsKey(id);
+    }
+
+    @Override
+    public boolean hasCart(String id) {
+        return carts.containsKey(id);
     }
 }

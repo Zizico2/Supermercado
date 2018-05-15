@@ -9,4 +9,7 @@ public interface Supermarket {
     String listItems(String ID);
     int pay(String ID);
 
+    boolean hasItem(String id);
+
+    boolean hasCart(String id);
 }
