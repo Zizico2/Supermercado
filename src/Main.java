@@ -97,7 +97,7 @@ public class Main {
 
 
                 case EXIT:
-                    System.out.println(Message.EXITING.msg + "\n");
+                    System.out.println(Message.EXITING.msg);
                     in.close();
                     break;
 
