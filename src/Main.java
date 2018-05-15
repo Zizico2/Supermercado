@@ -118,7 +118,7 @@ public class Main {
         }
         catch (DuplicateIDException e){
             System.out.println(Message.DUPLICATE_CART.msg);
-        }ds
+        }
     }
 
     private static void registerCart(Scanner in, Supermarket sP) throws DuplicateIDException {
