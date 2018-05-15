@@ -14,7 +14,7 @@ public class Main {
     private enum Message {
 
         CART_REGISTERED("Carrinho criado com sucesso."),
-        DUPLICATE_CART("Carrinho existente!"),
+        DUPLICATE_CART("Carrinho inexistente!"),
         ITEM_REGISTERED("Artigo criado com sucesso."),
         DUPLICATE_ITEM("Artigo existente!"),
         ITEM_ADDED_TO_CART("Artigo adicionado com sucesso."),
