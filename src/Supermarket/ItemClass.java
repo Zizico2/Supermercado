@@ -23,6 +23,11 @@ public class ItemClass implements Item{
         return price;
     }
 
+    @Override
+    public String getID() {
+        return ID;
+    }
+
     public String toString(){
         return ID + " " + price + "\n";
     }

@@ -73,4 +73,15 @@ public class SupermarketClass implements Supermarket {
         Cart cart = carts.get(cartID);
         return (cart.getCapacity() - item.getVolume()) >= 0;
     }
+
+    @Override
+    public boolean hasItemInCart(String cartID, String itemID) {
+        Cart cart = carts.get(cartID);
+        List<Item> items = cart.getItems();
+        for (Item item : items) {
+            if(item.getID().equals(itemID))
+                return true;
+        }
+        return false;
+    }
 }

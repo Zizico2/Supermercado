@@ -1,5 +1,6 @@
 package Supermarket;
 
+
 public interface Item {
 
     int getVolume();
@@ -7,4 +8,6 @@ public interface Item {
     String toString();
 
     int getPrice();
+
+    String getID();
 }

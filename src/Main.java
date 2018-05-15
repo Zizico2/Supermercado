@@ -1,10 +1,6 @@
-import Exceptions.CapacityExcededException;
-import Exceptions.DuplicateIDException;
-import Exceptions.CartIDNotFoundException;
-import Exceptions.ItemIDNotFoundException;
+import Exceptions.*;
 import Supermarket.Supermarket;
 import Supermarket.SupermarketClass;
-
 import java.util.Scanner;
 
 public class Main {
@@ -22,12 +18,13 @@ public class Main {
         ITEM_REGISTERED("Artigo criado com sucesso."),
         DUPLICATE_ITEM("Artigo existente!"),
         ITEM_ADDED_TO_CART("Artigo adicionado com sucesso."),
-        INEXISTANT_CART("Carrinho inexistente!"),
-        INEXISTANT_ITEM("Artigo inexistente!"),
+        NON_EXISTANT_CART("Carrinho inexistente!"),
+        NON_EXISTANT_ITEM("Artigo inexistente!"),
         NO_MORE_SPACE("Capacidade excedida!"),
-        ITEM_REMOVED("Artigo removeido com sucesso."),
-        CART_DOES_NOT_CONTAIN_ITEM(INEXISTANT_ITEM.msg.replace("!", " no carrinho!")),
+        ITEM_REMOVED("Artigo removido com sucesso."),
+        CART_DOES_NOT_CONTAIN_ITEM(NON_EXISTANT_ITEM.msg.replace("!", " no carrinho!")),
         EMPTY_CART("Carrinho vazio!"),
+        VOID(""),
         UNKNOWN("Opcao inexistente."),
         EXITING("Volte sempre.");
 
@@ -87,7 +84,7 @@ public class Main {
                     break;
 
                 case REMOVE_FROM_CART:
-                    processRemoveFromCart(sP);
+                    processRemoveFromCart(in,sP);
                     break;
 
                 case LIST_ITEMS:
@@ -156,10 +153,10 @@ public class Main {
             addToCart(in,sP);
             System.out.println(Message.ITEM_ADDED_TO_CART.msg);
         } catch(CartIDNotFoundException e){
-            System.out.println(Message.INEXISTANT_CART.msg);
+            System.out.println(Message.NON_EXISTANT_CART.msg);
         }
         catch(ItemIDNotFoundException e){
-            System.out.println(Message.INEXISTANT_ITEM.msg);
+            System.out.println(Message.NON_EXISTANT_ITEM.msg);
         }
         catch(CapacityExcededException e){
             System.out.println(Message.NO_MORE_SPACE.msg);
@@ -179,12 +176,72 @@ public class Main {
         sP.addToCart(itemID,cartID);
     }
 
-    private static void processRemoveFromCart(Supermarket sP) {
+    private static void processRemoveFromCart(Scanner in, Supermarket sP) {
+        try{
+            removeFromCart(in,sP);
+            System.out.println(Message.ITEM_REMOVED.msg);
+        } catch(CartIDNotFoundException e){
+            System.out.println(Message.NON_EXISTANT_CART.msg);
+        }
+        catch(ItemIDNotFoundException e){
+            System.out.println(Message.CART_DOES_NOT_CONTAIN_ITEM.msg);
+        }
+    }
+
+    private static void removeFromCart(Scanner in,Supermarket sP) throws  CartIDNotFoundException,ItemIDNotFoundException{
+        String itemID = in.next().trim();
+        String cartID = in.nextLine().trim();
+
+        if(!sP.hasCart(cartID))
+            throw new CartIDNotFoundException();
+        if(!sP.hasItemInCart(cartID,itemID))
+            throw new ItemIDNotFoundException();
+        sP.removeFromCart(itemID,cartID);
     }
 
     private static void processListItems(Scanner in, Supermarket sP) {
+        try{
+            listItems(in,sP);
+        } catch(CartIDNotFoundException e){
+            System.out.println(Message.NON_EXISTANT_CART.msg);
+        }
+        catch(EmptyCartException e){
+            System.out.println(Message.EMPTY_CART.msg);
+        }
+    }
+
+    private static void listItems(Scanner in, Supermarket sP) throws CartIDNotFoundException,EmptyCartException{
+        String cartID = in.nextLine();
+
+        if(!sP.hasCart(cartID))
+            throw new CartIDNotFoundException();
+        String msg = sP.listItems(cartID);
+
+        if(msg.equals(Message.VOID.msg))
+            throw new EmptyCartException();
+        System.out.print(msg);
     }
 
     private static void processPay(Scanner in, Supermarket sP) {
+        try{
+            Pay(in,sP);
+        }  catch(CartIDNotFoundException e){
+            System.out.println(Message.NON_EXISTANT_CART.msg);
+        }
+        catch(EmptyCartException e){
+            System.out.println(Message.EMPTY_CART.msg);
+        }
+    }
+
+    private static void Pay(Scanner in, Supermarket sP) throws CartIDNotFoundException,EmptyCartException {
+        String cartID = in.nextLine();
+
+        if(!sP.hasCart(cartID))
+            throw new CartIDNotFoundException();
+        int total = sP.pay(cartID);
+
+        if(total == 0)
+            throw new EmptyCartException();
+        System.out.println(total);
     }
 }
