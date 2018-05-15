@@ -66,4 +66,11 @@ public class SupermarketClass implements Supermarket {
     public boolean hasCart(String id) {
         return carts.containsKey(id);
     }
+
+    @Override
+    public boolean enoughSpace(String itemID, String cartID) {
+        Item item = items.get(itemID);
+        Cart cart = carts.get(cartID);
+        return (cart.getCapacity() - item.getVolume()) >= 0;
+    }
 }

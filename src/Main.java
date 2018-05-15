@@ -154,6 +154,7 @@ public class Main {
     private static void processAddToCart(Scanner in, Supermarket sP) {
         try{
             addToCart(in,sP);
+            System.out.println(Message.ITEM_ADDED_TO_CART.msg);
         } catch(CartIDNotFoundException e){
             System.out.println(Message.INEXISTANT_CART.msg);
         }
@@ -165,7 +166,17 @@ public class Main {
         }
     }
 
-    private static void addToCart(Scanner in, Supermarket sP) {
+    private static void addToCart(Scanner in, Supermarket sP) throws CartIDNotFoundException,ItemIDNotFoundException,CapacityExcededException{
+        String itemID = in.next().trim();
+        String cartID = in.nextLine().trim();
+        if(!sP.hasCart(cartID))
+            throw new CartIDNotFoundException();
+        if(!sP.hasItem(itemID))
+            throw new ItemIDNotFoundException();
+        if(!sP.enoughSpace(itemID,cartID))
+            throw  new CapacityExcededException();
+
+        sP.addToCart(itemID,cartID);
     }
 
     private static void processRemoveFromCart(Supermarket sP) {

@@ -12,4 +12,6 @@ public interface Supermarket {
     boolean hasItem(String id);
 
     boolean hasCart(String id);
+
+    boolean enoughSpace(String itemID, String cartID);
 }
