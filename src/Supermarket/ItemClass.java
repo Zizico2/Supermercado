@@ -6,7 +6,7 @@ public class ItemClass implements Item{
     private int volume;
     private int price;
 
-    public ItemClass(String ID, int volume, int price) {
+    ItemClass(String ID, int price, int volume) {
         this.ID = ID;
         this.volume = volume;
         this.price = price;

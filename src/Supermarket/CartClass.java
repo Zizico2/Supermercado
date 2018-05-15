@@ -8,7 +8,7 @@ public class CartClass implements Cart{
     private int capacity;
     private List<Item> items;
 
-    public CartClass(int capacity) {
+    CartClass(int capacity) {
         this.capacity = capacity;
         items = new ArrayList<>();
         }
